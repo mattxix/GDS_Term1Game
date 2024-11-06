@@ -13,7 +13,13 @@ var timer = setInterval(main, fps)
 
 /*------------Declare Variables Here--------*/
 
+//Declare WASD (Red) player and its visual properties/location
+//Declare Arrows (Blue) player and its visual properties/location
+//Declare friction and speed variables
+//Declare array of enemies
+//Declare number of enemies
 
+//Loop through the number of enemies and create a new GameObject for the enemy, scattering them in different parts in the level
 
 
 /*--------------main()------------------------
@@ -25,11 +31,24 @@ function main()
     //erases the screen
     ctx.clearRect(0,0,c.width,c.height); 
 
-    //Any changes to numbers
+    //Draw the map walls using fillRect
+    //Draw the gate using fillRect in the middle of the map
+    
+    //Check if a key is pressed and changed the player's velocity to the corresponding speed
 
-    //Any collision detection 
+    //For loop through all enemies
+    //Enemy.move and Enemy.render
+    //If the enemy x value is past a certain point, invert the velocity for both ways
 
-    //draw the pictures
+    //Check of the player overlaps with the walls/gate, if they do send both of them back to the start
+
+    //If the red player or blue player stands on (overlaps) their corresponding button, the gate will be open and be moved off screen
+    //If they aren't overlapping, move the gate to the center of the screen
+    //If both the players overlap with the exit, the game ends
+
+    //If the player is coliding with an enemy, move both players back to the start and shut the gate
+
+    //Player render and player move
 }
 
 //random number generator

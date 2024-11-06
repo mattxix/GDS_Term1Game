@@ -6,6 +6,8 @@ var a = false;
 var s = false;
 var d = false;
 
+//Add up, down, left, right arrow keys
+
 /*---Key Press Code-----------*/
 
 document.addEventListener(`keydown`, press);
