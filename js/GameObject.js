@@ -15,9 +15,9 @@ class GameObject
      this.vx=0;
      this.vy=0;
     //object color
-     this.color = `hotpink`  
-
-     
+     this.color = `hotpink` 
+     //friction 
+     this.friction = 0.3;
     }
 
     //Draws a rectangle 
