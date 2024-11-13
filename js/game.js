@@ -179,6 +179,7 @@ function main() {
     ctx.clearRect(0, 0, c.width, c.height);
 
 
+    
     //Check if a key is pressed and changed the player's velocity to the corresponding speed
     getVelocity();
 
