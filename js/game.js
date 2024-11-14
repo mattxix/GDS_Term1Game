@@ -11,12 +11,26 @@ var fps = 1000 / 60
 var timer = setInterval(main, fps)
 
 ctx.font = "20pt Arial"
+ctx.fillStyle = "#32dae6"
 ctx.textAlign = "center"
 
 /*------------Declare Variables Here--------*/
 
 //Declare WASD (Red) player and its visual properties/location
 //Declare Arrows (Blue) player and its visual properties/location
+
+const images = {
+    "redSquare" : document.getElementById("redSquare"),
+    "redButton" : document.getElementById("redButton"),
+    "blueSquare" : document.getElementById("blueSquare"),
+    "blueButton" : document.getElementById("blueButton"),
+    "gate" : document.getElementById("gate"),
+    "finish" : document.getElementById("finish"),
+    "enemy" : document.getElementById("enemy"),
+    "background" : document.getElementById("background"),
+}
+
+var redSquare = document.getElementById("redSquare")
 
 var playerOne = new GameObject();
 playerOne.color = "red"
@@ -162,7 +176,7 @@ for (let i = 0; i < wallsData.length; i++) {
     wall.y = data.y
     wall.w = data.width
     wall.h = data.height
-    wall.color = "gray"
+    wall.color = "#2b2b2b"
     console.log(data)
 }
 
@@ -177,7 +191,7 @@ This is the function that makes the game work
 function main() {
     //erases the screen
     ctx.clearRect(0, 0, c.width, c.height);
-
+    ctx.drawImage(images.background, 0, 0, c.width, c.height)
 
     
     //Check if a key is pressed and changed the player's velocity to the corresponding speed
@@ -198,8 +212,8 @@ function main() {
         restartPlayers();
     }
 
-    buttonOne.render();
-    buttonTwo.render();
+    buttonOne.renderImage(images.redButton);
+    buttonTwo.renderImage(images.blueButton);
 
     //If the red player or blue player stands on (overlaps) their corresponding button, the gate will be open and be moved off screen
     if (playerOne.overlaps(buttonOne) || playerTwo.overlaps(buttonTwo)) {
@@ -208,11 +222,11 @@ function main() {
         gate.y = c.height / 2
     }
     //Draw the gate using fillRect in the middle of the map
-    gate.render();
+    gate.renderImage(images.gate);
 
 
     //If both the players overlap with the exit, the game ends
-    end.render();
+    end.renderImage(images.finish);
     if (playerOne.overlaps(end) && playerTwo.overlaps(end)) {
         ctx.fillText("You Win!", c.width / 2, 50, 800)
     } else {
@@ -228,7 +242,7 @@ function main() {
     for (let i = 0; i < enemies.length; i++) {
         let enemy = enemies[i]
         enemy.move();
-        enemy.render();
+        enemy.renderImage(images.enemy);
 
         //If the enemy y value is past a certain point, invert the velocity for both ways
         if (enemy.y > 340) {
@@ -249,8 +263,8 @@ function main() {
     //Player render and player move
     playerOne.move();
     playerTwo.move();
-    playerOne.render();
-    playerTwo.render();
+    playerOne.renderImage(images.redSquare);
+    playerTwo.render(images.blueSquare);
 }
 
 function getVelocity() {
